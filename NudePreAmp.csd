@@ -5,21 +5,23 @@
 
 <Cabbage>
 #define SLIDER_APPEARANCE trackercolour("DarkSlateGrey"), textcolour("black") 
-form caption("NudePreAmp") size(300,330), pluginid("npmp") style("legacy")
+form caption("NudePreAmp") size(300,330), pluginid("npmp") style("legacy"), bundle("brushed metal background 1305.jpg")
+image bounds(0, 0, 300, 329) file("brushed metal background 1305.jpg") 
 ;image            bounds(0, 0, 440, 130), outlinethickness(6), , colour(128, 128, 128, 255)
 ;rslider bounds( 10, 10, 70, 70), channel("thresh"), text("Threshold"), range(0,120,0), $SLIDER_APPEARANCE
 ;rslider bounds( 80, 10, 70, 70), channel("att"), text("Attack"),  range(0,1,0.01,0.5), $SLIDER_APPEARANCE
 ;rslider bounds(150, 10, 70, 70), channel("rel"), text("Release"), range(0,1,0.05,0.5), $SLIDER_APPEARANCE
 ;rslider bounds(220, 10, 70, 70), channel("ratio"), text("Ratio"), range(1,300,10000,0.5), $SLIDER_APPEARANCE
-rslider bounds(80, 34, 60, 60), channel("look"), text("Lookahead"), range(0, 1, 0.01, 0.5, 0.001), $SLIDER_APPEARANCE textcolour(255, 255, 255, 255) trackercolour(255, 0, 255, 255)
-rslider bounds(80, 240, 60, 60), channel("gain"), text("Make Up"), range(-36, 36, 0, 1, 0.001), $SLIDER_APPEARANCE textcolour(255, 255, 255, 255) trackercolour(255, 0, 255, 255)
-rslider bounds(158, 240, 60, 60), channel("out"), text("Out Level"), range(0, 50, 0, 1, 0.001), $SLIDER_APPEARANCE textcolour(255, 255, 255, 255) trackercolour(255, 0, 255, 255)
+rslider bounds(80, 34, 60, 60), channel("look"), text("Lookahead"), range(0, 1, 0.01, 0.5, 0.001), $SLIDER_APPEARANCE textcolour(0, 0, 0, 255) trackercolour(255, 0, 255, 255) colour(255, 100, 100, 255)
+rslider bounds(80, 240, 60, 60), channel("gain"), text("Make Up"), range(-36, 36, 0, 1, 0.001), $SLIDER_APPEARANCE textcolour(0, 0, 0,255) trackercolour(255, 0, 255, 255), colour(255, 200, 100, 255)
+rslider bounds(158, 240, 60, 60), channel("out"), text("Out Level"), range(0, 50, 0, 1, 0.001), $SLIDER_APPEARANCE textcolour(0, 0,0,255) trackercolour(255, 0, 255, 255), colour(255, 200, 100, 255)
 ;hrange   bounds(10, 80, 420, 30), channel("LowKnee","HighKnee"), range(0, 120, 48:60), $SLIDER_APPEARANCE
 ;label    bounds(10, 108, 420, 13), text("Soft Knee"), fontcolour(0, 0, 0, 255)
-rslider bounds(50, 134, 60, 60) range(0, 10, 0, 1, 0.001), text("Attack") textcolour(255, 255, 255, 255), channel("attack") trackercolour(255, 0, 255, 255)
-rslider bounds(120, 134, 60, 60) range(0, 2, 0, 1, 0.001), text("Growl") textcolour(255, 255, 255, 255), channel("growl") trackercolour(255, 0, 255, 255)
-rslider bounds(190, 134, 60, 60) range(0, 10, 0, 1, 0.001), text("Purr") textcolour(255, 255, 255, 255), channel("purr") trackercolour(255, 0, 255, 255)
-rslider bounds(152, 34, 60, 60) range(1, 300, 80, 0.5, 0.001), text("Coseyness"), channel("ratio") textcolour(255, 255, 255, 255) trackercolour(255, 0, 255, 255)
+rslider bounds(50, 134, 60, 60) range(0, 10, 0, 1, 0.001), text("Attack") textcolour(0, 0, 0, 255), channel("attack") trackercolour(255, 0, 255, 255) colour(255, 100, 100, 255)
+rslider bounds(120, 134, 60, 60) range(0, 2, 0, 1, 0.001), text("Growl") textcolour(0, 0, 0, 255), channel("growl") trackercolour(255, 0, 255, 255), colour(255, 100, 100, 255)
+rslider bounds(190, 134, 60, 60) range(0, 10, 0, 1, 0.001), text("Purr") textcolour(0, 0, 0, 255), channel("purr") trackercolour(255, 0, 255, 255), colour(255, 100, 100, 255)
+rslider bounds(152, 34, 60, 60) range(1, 300, 80, 0.5, 0.001), text("Coseyness"), channel("ratio") textcolour(0, 0, 0, 255) trackercolour(255, 0, 255, 255) colour(255, 100, 100, 255)
+
 </Cabbage>
 
 <CsoundSynthesizer>
@@ -39,8 +41,8 @@ nchnls = 2
 
 instr 1
 
- ;aL,aR		ins	; read in live audio
- aL,aR	diskin2 "bassCR.wav", 1,1,1	
+ aL,aR		ins	; read in live audio
+; aL,aR	diskin2 "bassCR.wav", 1,1,1	
  							
  kthresh = 30.15 ;chnget		"thresh"
  kLowKnee = 34.63 ;chnget		"LowKnee"
