@@ -33,7 +33,7 @@ rslider bounds(152, 34, 60, 60) range(1, 300, 80, 0.5, 0.001), text("Coseyness")
 <CsInstruments>
 
 ;sr is set by the host
-ksmps = 32
+ksmps = 4
 nchnls = 2
 0dbfs = 1
 
